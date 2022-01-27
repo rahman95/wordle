@@ -1,9 +1,11 @@
 import React from 'react';
 
+import css from './Header.module.css';
+
 function Header() {
   return (
-    <header className="header">
-      <h2>WORDLE</h2>
+    <header className={css.header}>
+      <h1>WORDLE</h1>
     </header>
   );
 }
