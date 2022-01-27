@@ -1,0 +1,47 @@
+{
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": ["airbnb", "prettier", "plugin:prettier/recommended"],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly",
+      "window": true,
+      "document": true,
+      "localStorage": true,
+      "FormData": true,
+      "FileReader": true,
+      "Blob": true,
+      "navigator": true
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 8,
+      "requireConfigFile": false,
+      "sourceType": "module"
+    },
+    "settings": {
+      "react": {
+          "version": "detect"
+      }
+    },
+    "plugins": ["react", "prettier", "react-hooks"],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [".js", ".jsx"]
+        }
+      ],
+      "import/imports-first": ["error", "absolute-first"],
+      "import/newline-after-import": "error",
+      "react/prop-types": 0,
+      "no-console": 0
+    }
+  }

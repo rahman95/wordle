@@ -1,6 +1,7 @@
-import css from "./Keyboard.module.css";
+import React from 'react';
+import css from './Keyboard.module.css';
 
-const Keyboard = ({}) => {
+function Keyboard() {
   return (
     <section className={css.keyboard}>
       <span>QWERTYUIOP</span>
@@ -8,6 +9,6 @@ const Keyboard = ({}) => {
       <span>ZXCVBNM</span>
     </section>
   );
-};
+}
 
 export default Keyboard;

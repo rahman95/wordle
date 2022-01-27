@@ -1,8 +1,9 @@
-import Header from "./Header/Header";
-import GameBoard from "./GameBoard/GameBoard";
-import Keyboard from "./Keyboard/Keyboard";
+import React from 'react';
+import Header from './Header/Header';
+import GameBoard from './GameBoard/GameBoard';
+import Keyboard from './Keyboard/Keyboard';
 
-import css from "./App.module.css";
+import css from './App.module.css';
 
 function App() {
   return (

@@ -1,6 +1,7 @@
-import css from "./GameBoard.module.css";
+import React from 'react';
+import css from './GameBoard.module.css';
 
-const GameBoard = ({}) => {
+function GameBoard() {
   return (
     <section className={css.gameBoard}>
       <span>⬛️ ⬛️ 🟨 ⬛️ ⬛️</span>
@@ -11,6 +12,6 @@ const GameBoard = ({}) => {
       <span>⬛️ ⬛️ ⬛️ ⬛️ ⬛️</span>
     </section>
   );
-};
+}
 
 export default GameBoard;
