@@ -1,10 +1,18 @@
+.row {
+    display: flex;
+}
+
 .input {
+    display: flex;
     width: 2.5rem;
     height: 2.5rem;
     margin: 0.15rem;
     text-align: center;
     font-weight: bold;
     text-transform: capitalize;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
 }
 
 .present {

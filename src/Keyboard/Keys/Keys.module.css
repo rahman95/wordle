@@ -8,3 +8,15 @@
     height: 3.5rem;
     margin: 0.15rem;
 }
+
+.present {
+    background-color: #B59F3B;
+}
+
+.correct {
+    background-color: #538D4E;
+}
+
+.used {
+    background-color: #b7b7b7;
+}

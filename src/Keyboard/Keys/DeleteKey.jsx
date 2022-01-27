@@ -5,7 +5,6 @@ import css from './Keys.module.css';
 function DeleteKey({ currentGuess, setCurrentGuess }) {
   const handleClick = () => {
     if (currentGuess.length === 0) {
-      console.log('cannot delete');
       return;
     }
 

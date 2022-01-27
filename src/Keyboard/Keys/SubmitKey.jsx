@@ -5,7 +5,6 @@ import css from './Keys.module.css';
 function SubmitKey({ currentGuess, submitGuess }) {
   const handleClick = () => {
     if (currentGuess.length !== 5) {
-      console.log('cannot submit');
       return;
     }
 

@@ -5,33 +5,47 @@ import DeleteKey from './Keys/DeleteKey';
 
 import css from './Keyboard.module.css';
 
-function Keyboard({
-  wordOfDay,
-  currentGuess,
-  setCurrentGuess,
-  lettersUsed,
-  submitGuess,
-}) {
+function Keyboard({ guesses, submitGuess, currentGuess, setCurrentGuess }) {
+  const correctLetters = new Set();
+  const presentLetters = new Set();
+  const usedLetters = new Set();
+  guesses.flatMap((guess) => {
+    guess.forEach(({ letter, isPresent, isCorrect }) => {
+      if (isCorrect) {
+        correctLetters.add(letter);
+        return;
+      }
+      if (isPresent) {
+        presentLetters.add(letter);
+        return;
+      }
+      usedLetters.add(letter);
+    });
+  });
+
   return (
     <section className={css.keyboard}>
       <Keys
-        wordOfDay={wordOfDay}
+        correctLetters={correctLetters}
+        presentLetters={presentLetters}
+        usedLetters={usedLetters}
         letters={'QWERTYUIOP'}
-        lettersUsed={lettersUsed}
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
       />
       <Keys
-        wordOfDay={wordOfDay}
+        correctLetters={correctLetters}
+        presentLetters={presentLetters}
+        usedLetters={usedLetters}
         letters={'ASDFGHJKL'}
-        lettersUsed={lettersUsed}
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
       />
       <Keys
-        wordOfDay={wordOfDay}
+        correctLetters={correctLetters}
+        presentLetters={presentLetters}
+        usedLetters={usedLetters}
         letters={'ZXCVBNM'}
-        lettersUsed={lettersUsed}
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
         adornmentStart={

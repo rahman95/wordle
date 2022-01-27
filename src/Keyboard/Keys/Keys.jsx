@@ -1,10 +1,13 @@
 import React from 'react';
+import Key from './Key';
+
 import css from './Keys.module.css';
 
 function Keys({
-  wordOfDay,
+  correctLetters,
+  presentLetters,
+  usedLetters,
   letters,
-  lettersUsed,
   adornmentStart,
   adornmentEnd,
   currentGuess,
@@ -14,21 +17,12 @@ function Keys({
     const key = e.target.textContent.toLowerCase();
 
     if (currentGuess.length === 5) {
-      console.log('letters reached');
       return;
     }
 
     setCurrentGuess((currentGuess) => {
       return currentGuess + key;
     });
-  };
-
-  const Key = ({ letter }) => {
-    return (
-      <button className={css.key} key={letter} onClick={handleClick}>
-        {letter}
-      </button>
-    );
   };
 
   return (
@@ -38,7 +32,14 @@ function Keys({
         .toUpperCase()
         .split('')
         .map((letter) => (
-          <Key key={letter} letter={letter} />
+          <Key
+            key={letter}
+            letter={letter}
+            handleClick={handleClick}
+            correctLetters={correctLetters}
+            presentLetters={presentLetters}
+            usedLetters={usedLetters}
+          />
         ))}
       {adornmentEnd}
     </div>

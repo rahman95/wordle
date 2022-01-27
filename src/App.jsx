@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header/Header';
 import GameBoard from './GameBoard/GameBoard';
 import Keyboard from './Keyboard/Keyboard';
+import WinLossOverlay from './WinLossOverlay/WinLossOverlay';
 
 import css from './App.module.css';
 
@@ -11,8 +12,6 @@ function App() {
   const [lettersUsed, setLettersUsed] = useState(new Set());
   const [currentGuess, setCurrentGuess] = useState('');
   const [guesses, setGuesses] = useState([]);
-
-  console.log({ guesses, lettersUsed, hasWon });
 
   const handleSettingLettersUsed = (guess) => {
     setLettersUsed((prevLettersUsed) => {
@@ -33,8 +32,6 @@ function App() {
         isCorrect: isPresent && wordOfDayArray[index] === letter,
       };
     });
-
-    console.log({ formattedGuess });
 
     setGuesses((prevGuesses) => {
       return [...prevGuesses, formattedGuess];
@@ -66,12 +63,12 @@ function App() {
         currentGuess={currentGuess}
       />
       <Keyboard
-        wordOfDay={wordOfDay.split('')}
-        lettersUsed={Array.from(lettersUsed)}
+        guesses={guesses}
         submitGuess={submitGuess}
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
       />
+      <WinLossOverlay hasWon={hasWon} guessCount={guesses.length} />
     </div>
   );
 }

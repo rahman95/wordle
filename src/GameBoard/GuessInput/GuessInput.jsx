@@ -1,4 +1,5 @@
 import React from 'react';
+
 import css from './GuessInput.module.css';
 
 function GuessInput({ current, guess, currentGuess }) {
@@ -6,20 +7,25 @@ function GuessInput({ current, guess, currentGuess }) {
     const guessLetter = guess[index];
 
     return (
-      <input
+      <span
         className={`${css.input} ${guessLetter?.isPresent ? css.present : ''} ${
           guessLetter?.isCorrect ? css.correct : ''
         }`}
-        value={current ? letter : guessLetter?.letter}
-        readOnly={true}
-      />
+      >
+        {current ? letter : guessLetter?.letter}
+      </span>
     );
   };
 
   return (
-    <div>
+    <div className={css.row}>
       {[...Array(5).keys()].map((index) => (
-        <Input current={current} letter={currentGuess[index]} index={index} />
+        <Input
+          key={index}
+          current={current}
+          letter={currentGuess[index]}
+          index={index}
+        />
       ))}
     </div>
   );
