@@ -2,8 +2,23 @@ import React from 'react';
 
 import css from './Keys.module.css';
 
-function DeleteKey() {
-  return <button className={css.adornedKey}>DELETE</button>;
+function DeleteKey({ currentGuess, setCurrentGuess }) {
+  const handleClick = () => {
+    if (currentGuess.length === 0) {
+      console.log('cannot delete');
+      return;
+    }
+
+    setCurrentGuess((prevCurrentGuess) => {
+      return prevCurrentGuess.slice(0, prevCurrentGuess.length - 1);
+    });
+  };
+
+  return (
+    <button className={css.adornedKey} onClick={handleClick}>
+      DELETE
+    </button>
+  );
 }
 
 export default DeleteKey;

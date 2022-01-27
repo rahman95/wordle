@@ -1,7 +1,36 @@
 import React from 'react';
 import css from './Keys.module.css';
 
-function Keys({ letters, lettersUsed, adornmentStart, adornmentEnd }) {
+function Keys({
+  wordOfDay,
+  letters,
+  lettersUsed,
+  adornmentStart,
+  adornmentEnd,
+  currentGuess,
+  setCurrentGuess,
+}) {
+  const handleClick = (e) => {
+    const key = e.target.textContent.toLowerCase();
+
+    if (currentGuess.length === 5) {
+      console.log('letters reached');
+      return;
+    }
+
+    setCurrentGuess((currentGuess) => {
+      return currentGuess + key;
+    });
+  };
+
+  const Key = ({ letter }) => {
+    return (
+      <button className={css.key} key={letter} onClick={handleClick}>
+        {letter}
+      </button>
+    );
+  };
+
   return (
     <div className={css.row}>
       {adornmentStart}
@@ -9,9 +38,7 @@ function Keys({ letters, lettersUsed, adornmentStart, adornmentEnd }) {
         .toUpperCase()
         .split('')
         .map((letter) => (
-          <button className={css.key} key={letter}>
-            {letter}
-          </button>
+          <Key key={letter} letter={letter} />
         ))}
       {adornmentEnd}
     </div>

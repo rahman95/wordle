@@ -10,20 +10,45 @@ function App() {
   const [wordOfDay, setWordOfDay] = useState('WHACK');
   const [lettersUsed, setLettersUsed] = useState(new Set());
   const [currentGuess, setCurrentGuess] = useState('');
-  const [guessNumber, setGuessNumber] = useState(0);
   const [guesses, setGuesses] = useState([]);
 
-  console.log({ guesses, guessNumber, lettersUsed, hasWon });
+  console.log({ guesses, lettersUsed, hasWon });
+
+  const handleSettingLettersUsed = (guess) => {
+    setLettersUsed((prevLettersUsed) => {
+      return new Set([...prevLettersUsed, guess.toLowerCase().split('')]);
+    });
+  };
+
+  const handleSettingGuesses = (guess) => {
+    const wordOfDayArray = wordOfDay.toLowerCase().split('');
+    const guessArray = guess.toLowerCase().split('');
+
+    const formattedGuess = guessArray.map((letter, index) => {
+      const isPresent = wordOfDayArray.includes(letter);
+      return {
+        index,
+        letter,
+        isPresent,
+        isCorrect: isPresent && wordOfDayArray[index] === letter,
+      };
+    });
+
+    console.log({ formattedGuess });
+
+    setGuesses((prevGuesses) => {
+      return [...prevGuesses, formattedGuess];
+    });
+  };
 
   const submitGuess = (guess) => {
-    if (guessNumber === 6) {
+    if (guesses.length === 6) {
       // Game Over
       return;
     }
-    setGuessNumber(guessNumber + 1);
-    setGuesses([...guesses, guess]);
-    const letters = guess.toLowerCase().split('');
-    setLettersUsed((_) => new Set([...lettersUsed, ...letters]));
+    setCurrentGuess('');
+    handleSettingGuesses(guess);
+    handleSettingLettersUsed(guess);
 
     if (wordOfDay.toLowerCase() === guess.toLowerCase()) {
       console.log('GAME WON');
@@ -36,13 +61,15 @@ function App() {
       <Header />
       <GameBoard
         wordOfDay={wordOfDay}
-        lettersUsed={lettersUsed}
+        lettersUsed={Array.from(lettersUsed)}
         guesses={guesses}
         currentGuess={currentGuess}
       />
       <Keyboard
-        lettersUsed={lettersUsed}
+        wordOfDay={wordOfDay.split('')}
+        lettersUsed={Array.from(lettersUsed)}
         submitGuess={submitGuess}
+        currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
       />
     </div>

@@ -7,9 +7,13 @@ function GameBoard({ guesses, currentGuess }) {
   return (
     <section className={css.gameBoard}>
       {[...Array(6).keys()].map((index) => (
-        <GuessInput key={index} guess={guesses[index] || ''} />
+        <GuessInput
+          current={index === guesses.length}
+          key={index}
+          guess={guesses[index] || ''}
+          currentGuess={currentGuess}
+        />
       ))}
-      <GuessInput guess={currentGuess} />
     </section>
   );
 }
