@@ -3,15 +3,23 @@ import Header from './Header/Header';
 import GameBoard from './GameBoard/GameBoard';
 import Keyboard from './Keyboard/Keyboard';
 import WinLossOverlay from './WinLossOverlay/WinLossOverlay';
+import words from './words.json';
 
 import css from './App.module.css';
 
 function App() {
   const [hasWon, setHasWon] = useState(false);
-  const [wordOfDay, setWordOfDay] = useState('WHACK');
+  const [wordOfDay, setWordOfDay] = useState('');
   const [lettersUsed, setLettersUsed] = useState(new Set());
   const [currentGuess, setCurrentGuess] = useState('');
   const [guesses, setGuesses] = useState([]);
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * 2315 + 1);
+    const randomWord = words[randomIndex];
+    console.log(randomWord);
+    setWordOfDay(randomWord);
+  }, []);
 
   const handleSettingLettersUsed = (guess) => {
     setLettersUsed((prevLettersUsed) => {
@@ -25,11 +33,13 @@ function App() {
 
     const formattedGuess = guessArray.map((letter, index) => {
       const isPresent = wordOfDayArray.includes(letter);
+      const isCorrect = isPresent && wordOfDayArray[index] === letter;
       return {
         index,
         letter,
         isPresent,
-        isCorrect: isPresent && wordOfDayArray[index] === letter,
+        isCorrect,
+        isAbsent: !isPresent && !isCorrect,
       };
     });
 
@@ -68,7 +78,11 @@ function App() {
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
       />
-      <WinLossOverlay hasWon={hasWon} guessCount={guesses.length} />
+      <WinLossOverlay
+        hasWon={hasWon}
+        hasFinished={guesses.length === 6}
+        wordOfDay={wordOfDay}
+      />
     </div>
   );
 }

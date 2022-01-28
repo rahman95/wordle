@@ -8,9 +8,12 @@ function GuessInput({ current, guess, currentGuess }) {
 
     return (
       <span
-        className={`${css.input} ${guessLetter?.isPresent ? css.present : ''} ${
-          guessLetter?.isCorrect ? css.correct : ''
-        }`}
+        className={`
+          ${css.input}
+          ${guessLetter?.isCorrect ? css.correct : ''}
+          ${guessLetter?.isPresent ? css.present : ''}
+          ${guessLetter?.isAbsent ? css.absent : ''}
+        `}
       >
         {current ? letter : guessLetter?.letter}
       </span>

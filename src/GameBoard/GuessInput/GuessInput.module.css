@@ -4,21 +4,33 @@
 
 .input {
     display: flex;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3.75rem;
+    height: 3.75rem;
     margin: 0.15rem;
     text-align: center;
     font-weight: bold;
     text-transform: capitalize;
-    border: 1px solid black;
+    border: 2px solid lightgray;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
 }
 
 .present {
     background-color: #B59F3B;
+    color: white;
+    border: 2px solid #B59F3B;
 }
 
 .correct {
     background-color: #538D4E;
+    color: white;
+    border: 2px solid #538D4E;
+    
+}
+
+.absent {
+    background-color:  #787c7e;
+    color: white;
+    border: 2px solid #787c7e;
 }

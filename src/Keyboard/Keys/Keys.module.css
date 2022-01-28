@@ -1,22 +1,42 @@
 .key {
-    width: 2.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 4rem;
     margin: 0.15rem;
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1rem;
 }
 
 .adornedKey {
-    height: 3.5rem;
+    height: 4rem;
+    width: 4.5rem;
     margin: 0.15rem;
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1rem;
 }
 
 .present {
     background-color: #B59F3B;
+    color: white;
 }
 
 .correct {
     background-color: #538D4E;
+    color: white;
 }
 
-.used {
-    background-color: #b7b7b7;
+.absent {
+    background-color:  #787c7e;
+    color: white;
 }

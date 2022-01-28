@@ -18,7 +18,7 @@ function Key({
       return css.present;
     }
     if (usedLetters.has(letterLowered)) {
-      return css.used;
+      return css.absent;
     }
 
     return '';
