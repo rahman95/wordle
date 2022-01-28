@@ -14,7 +14,7 @@ function DeleteKey({ currentGuess, setCurrentGuess }) {
   };
 
   return (
-    <button className={css.adornedKey} onClick={handleClick}>
+    <button className={`${css.key} ${css.adornedKey}`} onClick={handleClick}>
       DELETE
     </button>
   );

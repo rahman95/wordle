@@ -17,3 +17,29 @@
     width: 25rem;
     border-radius: 10px;
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 2.5rem;
+}
+
+.button {
+    background-color: #000;
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    user-select: none;
+    text-transform: uppercase;
+    width: 40%;
+    font-size: 1rem;
+    height: 3.5rem;
+    color: white;
+    margin: 0 0.75rem;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+}

@@ -63,6 +63,37 @@ function App() {
     }
   };
 
+  const generateShareArt = () => {
+    if (guesses.length === 0) {
+      return null;
+    }
+
+    const art = guesses
+      .map((guess) =>
+        guess
+          .map((letter) => {
+            if (letter.isCorrect) {
+              return '🟩';
+            }
+            if (letter.isPresent) {
+              return '🟨';
+            }
+            if (letter.isAbsent) {
+              return '⬛️';
+            }
+          })
+          .join('')
+      )
+      .join('\n');
+
+    navigator.clipboard.writeText(art);
+    console.log('Copied the text');
+  };
+
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+
   return (
     <div className={css.App}>
       <Header />
@@ -82,6 +113,8 @@ function App() {
         hasWon={hasWon}
         hasFinished={guesses.length === 6}
         wordOfDay={wordOfDay}
+        generateShareArt={generateShareArt}
+        refreshPage={refreshPage}
       />
     </div>
   );
