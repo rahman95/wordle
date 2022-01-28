@@ -5,7 +5,7 @@ import css from './Header.module.css';
 function Header() {
   return (
     <header className={css.header}>
-      <h1>WORDLE</h1>
+      <h1>WORDYL</h1>
     </header>
   );
 }
