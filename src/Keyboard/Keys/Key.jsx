@@ -9,8 +9,8 @@ function Key({
   presentLetters,
   usedLetters,
 }) {
-  const getClassToUse = (letter) => {
-    const letterLowered = letter.toLowerCase();
+  const getClassToUse = (key) => {
+    const letterLowered = key.toLowerCase();
     if (correctLetters.has(letterLowered)) {
       return css.correct;
     }
@@ -29,6 +29,7 @@ function Key({
       className={`${css.key} ${getClassToUse(letter)}`}
       key={letter}
       onClick={handleClick}
+      type="button"
     >
       {letter}
     </button>

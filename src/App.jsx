@@ -81,6 +81,7 @@ function App() {
             if (letter.isAbsent) {
               return '⬛️';
             }
+            return null;
           })
           .join('')
       )
@@ -88,6 +89,8 @@ function App() {
 
     navigator.clipboard.writeText(art);
     console.log('Copied the text');
+
+    return null;
   };
 
   const refreshPage = () => {

@@ -20,8 +20,8 @@ function Keys({
       return;
     }
 
-    setCurrentGuess((currentGuess) => {
-      return currentGuess + key;
+    setCurrentGuess((prevCurrentGuess) => {
+      return prevCurrentGuess + key;
     });
   };
 

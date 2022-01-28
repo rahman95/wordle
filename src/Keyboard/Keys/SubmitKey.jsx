@@ -12,7 +12,11 @@ function SubmitKey({ currentGuess, submitGuess }) {
   };
 
   return (
-    <button className={`${css.key} ${css.adornedKey}`} onClick={handleClick}>
+    <button
+      className={`${css.key} ${css.adornedKey}`}
+      onClick={handleClick}
+      type="button"
+    >
       ENTER
     </button>
   );

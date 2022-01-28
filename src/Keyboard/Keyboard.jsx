@@ -9,7 +9,7 @@ function Keyboard({ guesses, submitGuess, currentGuess, setCurrentGuess }) {
   const correctLetters = new Set();
   const presentLetters = new Set();
   const usedLetters = new Set();
-  guesses.flatMap((guess) => {
+  guesses.forEach((guess) => {
     guess.forEach(({ letter, isPresent, isCorrect }) => {
       if (isCorrect) {
         correctLetters.add(letter);
@@ -29,7 +29,7 @@ function Keyboard({ guesses, submitGuess, currentGuess, setCurrentGuess }) {
         correctLetters={correctLetters}
         presentLetters={presentLetters}
         usedLetters={usedLetters}
-        letters={'QWERTYUIOP'}
+        letters="QWERTYUIOP"
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
       />
@@ -37,7 +37,7 @@ function Keyboard({ guesses, submitGuess, currentGuess, setCurrentGuess }) {
         correctLetters={correctLetters}
         presentLetters={presentLetters}
         usedLetters={usedLetters}
-        letters={'ASDFGHJKL'}
+        letters="ASDFGHJKL"
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
       />
@@ -45,7 +45,7 @@ function Keyboard({ guesses, submitGuess, currentGuess, setCurrentGuess }) {
         correctLetters={correctLetters}
         presentLetters={presentLetters}
         usedLetters={usedLetters}
-        letters={'ZXCVBNM'}
+        letters="ZXCVBNM"
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
         adornmentStart={
