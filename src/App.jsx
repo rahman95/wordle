@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import Header from './Header/Header';
-import Toast from './Toast/Toast';
+import ToastContainer from './Toast/ToastContainer';
 import GameBoard from './GameBoard/GameBoard';
 import Keyboard from './Keyboard/Keyboard';
 import WinLossOverlay from './WinLossOverlay/WinLossOverlay';
@@ -15,6 +15,7 @@ function App() {
   const [lettersUsed, setLettersUsed] = useState(new Set());
   const [currentGuess, setCurrentGuess] = useState('');
   const [guesses, setGuesses] = useState([]);
+  const [toastMessages, setToastMessages] = useState([]);
 
   useEffect(() => {
     const startDate = dayjs('2021-06-19'); // When WORDLE started
@@ -64,15 +65,29 @@ function App() {
     return false;
   };
 
+  const setToast = (message) => {
+    setToastMessages((prevMessages) => [...prevMessages, message]);
+    setTimeout(() => {
+      setToastMessages((prevMessages) => prevMessages.slice(0, -1));
+    }, 1500);
+  };
+
   const submitGuess = (guess) => {
+    if (currentGuess.length !== 5) {
+      setToast('Not enough letters!');
+      return;
+    }
+
     if (guesses.length === 6) {
       // Game Over
       return;
     }
+
     if (!isValid(guess)) {
-      console.log('NOT VALID WORD');
+      setToast('Not a valid word!');
       return;
     }
+
     setCurrentGuess('');
     handleSettingGuesses(guess);
     handleSettingLettersUsed(guess);
@@ -120,7 +135,7 @@ function App() {
   return (
     <div className={css.App}>
       <Header />
-      {/* <Toast message="Not a valid word!" /> */}
+      <ToastContainer toastMessages={toastMessages} />
       <GameBoard
         wordOfDay={wordOfDay}
         lettersUsed={Array.from(lettersUsed)}
