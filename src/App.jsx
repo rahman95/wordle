@@ -52,14 +52,24 @@ function App() {
     });
   };
 
-  const isValidWord = (guess) => wordList.guesses.some((x) => x === guess);
+  const isValidWord = (guess) => wordList.words.some((x) => x === guess);
+  const isValidGuess = (guess) => wordList.guesses.some((x) => x === guess);
+  const isValid = (guess) => {
+    if (isValidWord(guess)) {
+      return true;
+    }
+    if (isValidGuess(guess)) {
+      return true;
+    }
+    return false;
+  };
 
   const submitGuess = (guess) => {
     if (guesses.length === 6) {
       // Game Over
       return;
     }
-    if (!isValidWord(guess)) {
+    if (!isValid(guess)) {
       console.log('NOT VALID WORD');
       return;
     }
